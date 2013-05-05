@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<head>
+    <meta charset='UTF-8'>
+    
+    <link rel="stylesheet" href="/static/style/master.css" type="text/css" media="screen" charset="utf-8">
+    <script src="/static/script/jquery.min.js"></script>
+    <script>
+    
+    $("document").ready(function(){
+        
+        $("input").focus(function(e){
+            $(this).removeClass('error');
+        });
+        
+        $("textarea").click(function() {
+           $(this).select();
+        });
+        
+        $("#fetch_form_id").on("submit", function(e){
+            e.preventDefault();
+            
+            if($("#key_id").val().length < 44){
+               $("#key_id").addClass('error');
+               alert("Please provide a valid key.");
+               return false; 
+            }
+            
+            $("#submit_btn").prop('disabled', true);
+            $("#submit_btn").addClass('disabled');
+            
+            $("#loader").show();
+            
+            var url = $(this).prop('action')+'?'+$(this).serialize();
+            
+            var jqxhr = $.getJSON(url, function(data) {
+                
+                $("#json_id").val(JSON.stringify(data.rows));
+                
+                $(".json").show();
+                
+                $("#submit_btn").removeClass('disabled');
+                $("#submit_btn").prop('disabled', false);
+                
+                $("#loader").hide();
+                
+            }).fail(function(e){
+
+                $("#submit_btn").removeClass('disabled');
+                $("#submit_btn").prop('disabled', false);
+                
+                try{
+                    var msg = JSON.parse(e.responseText);
+                    
+                    alert(msg.error);
+                    
+                }catch(e){}
+                
+                $("#loader").hide();
+            });
+            
+        })
+    });
+    
+    </script>
+    
+</head>
+<body>
+
+<div class="section">
+    <div class="wrapper">        
+        <div class="description">
+            <h1>doc2JSON</h1>
+            <p>This is a small web utility to get JSON data from public google spreadsheets.</p>
+        </div>
+        
+    <div class="grid cf">
+        <div class="one-half cf">
+        <form id="fetch_form_id" action="/doc" method="get">
+            <label for="key_id">Google spreadsheet key</label>
+            <input type="text" id="key_id" name="key" placeholder="Your public doc key" class="field" />
+            
+            <div class="cf">
+                <label for="sheet_id" class="half-label">Optional sheet nr</label>
+                <input type="text" id="sheet_id" name="sheet" placeholder="Optional sheet nr" class="half-field" value="0"/>
+            </div>
+            
+            <input type="submit" value="fetch" class="btn" id="submit_btn" />
+           
+            
+            <div class="json" style="display:none;">
+                <label for="json_id" >Your JSON</label>
+                <textarea id="json_id" rows="10"></textarea>
+            </div>
+            
+        </form>
+        <div class="loader" id="loader" style="display:none;"></div>
+        </div>
+        
+        <div class="docs one-half">
+            <h3>API</h3>
+            
+            <p><span class="code">/doc?key=[yourpublicdockey]&amp;sheet=[sheetnr]</span></p>
+            
+            <h3>JSONP</h3>
+            <p>JSONP is supported just add <span class="code">callback=[x]</span>.</p>
+            
+            <h3>Command line utility</h3>
+            <p>There is also a command line utility if you like: <a href="github.com">github.com</a>.</p>
+        </div>
+        
+    </div>
+</div>
+</div>
+    
+<div class="footer">
+    Use this at your own discretion. It is by no means guaranteed that this will be up all the time. Web app source: <a href="#"> www.github.com</a>.
+</div>
+    
+</body>
+</html>

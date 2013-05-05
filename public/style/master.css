@@ -1,0 +1,242 @@
+/* Eric Meyer's Reset CSS v2.0 - http://cssreset.com */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+/* Default */
+
+body{
+    font-family: georgia;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.5em;
+    background: #f6f6f6;
+}
+
+h1{
+    font-size: 2em;
+    color: #d24937;
+    line-height: 1em;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h3{
+    font-size: 1.1em;
+    line-height: 1em;
+    font-weight: normal;
+    text-align: center;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+a,
+a:link,
+a:active,
+a:visited,
+a:hover{
+    font-weight: normal;
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover{
+    color: #d24937;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+.description{
+    padding: 40px 20px 15px 20px;
+    text-align: center;
+}
+
+.docs p{
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+label{
+    font-size: 14px;
+    line-height: 1em;
+    clear: both;
+    display: block;
+    margin-bottom: 10px;
+}
+
+
+.field,
+.half-field,
+textarea{
+    padding: 10px;
+    display: block;
+    font-size: 14px;
+    font-family: courier;
+    box-sizing: border-box;
+    margin: 0;
+    margin-bottom: 10px;
+    border: 2px solid #e5e5e5;
+}
+
+.field,
+textarea{
+    width: 100%;
+}
+
+.error{
+    color: #d24937;
+}
+
+.half-label{
+    float: left;
+    width: 50%;
+    line-height: 40px;
+    box-sizing: border-box;
+}
+
+.half-field{
+    float: right;
+    width: 50%;
+}
+
+.code{
+    background: yellow;
+    font-family: courier;
+    display:inline-block;
+    padding: 0 5px;
+    font-size: 12px;
+}
+
+.btn{
+    padding: 0 15px;
+    text-align: center;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    font-size: 11px;
+    line-height: 1px;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    float: right;
+    display:inline-block;
+    border:none;
+    cursor: pointer;
+    margin: 0;
+    background: #d24937;
+    color: #fff;
+    height: 27px;
+    line-height: 27px;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+}
+
+.section{
+    background: #fff;
+}
+
+.disabled{
+    opacity: .5;
+}
+
+.footer{
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    background: #f6f6f6;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 25px 40px 25px;
+}
+
+.wrapper{
+    max-width: 960px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+
+.grid{
+    padding: 0 10px;
+}
+
+.loader{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(255,255,255, .9) url(../../static/images/loader.gif) no-repeat center center;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+
+.grid .one-half,
+.grid .one-third,
+.grid .one-fourth,
+.grid .one-third,
+.grid .one-sixth{
+    float:left;
+    padding:20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.grid .one-half .image,
+.grid .one-third .image,
+.grid .one-fourth .image,
+.grid .one-third .image,
+.grid .one-sixth .image{
+    display: block;
+    background-color: red;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.grid .one-half{
+    position: relative;
+    width: 50%;
+}
+.grid .one-third{
+    width: 33.333%;
+}
+.grid .one-fourth{
+    width: 25%;
+}
+.grid .one-fifth{
+    width: 20%;
+}
+.grid .one-sixth{
+    width: 15%;
+}
+
+
+/* #Media Queries
+================================================== */
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    
+    .grid .one-half{
+        float: none;
+        width: 100%;
+    }
+}
+
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
