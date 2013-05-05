@@ -130,6 +130,10 @@ textarea{
     text-shadow: 0 1px rgba(0,0,0,0.1);
 }
 
+.btn:hover{
+    background: #c73828;
+}
+
 .section{
     background: #fff;
 }

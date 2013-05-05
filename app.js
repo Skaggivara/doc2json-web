@@ -4,7 +4,6 @@ var Miso = require('miso.dataset');
 var csv = require('csv');
 var request = require('request');
 
-
 var DOC = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=%s&single=true&gid=%s&output=csv';
 
 
@@ -51,6 +50,7 @@ app.get('/doc', function(req, res){
             var errors = [];
     
             parser.on("error", function(error){
+                console.log(error);
                 res.json(500, {error:'fetch error'});
             });
     
